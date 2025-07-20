@@ -1,9 +1,11 @@
 import streamlit as st
 import numpy as np
 import joblib
+import os
 
-# Load trained model
-model = joblib.load('model.pkl')
+# ✅ Fix for loading model on Streamlit Cloud
+model_path = os.path.join(os.path.dirname(__file__), 'model.pkl')
+model = joblib.load(model_path)
 
 st.title("🔬 Breast Cancer Detection App")
 st.markdown("Enter the input values for 30 features to predict if the tumor is **Benign** or **Malignant**.")
